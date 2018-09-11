@@ -1,55 +1,52 @@
-// These "include" code from the C++ library and SFML too
+// include da biblioteca gráfica da SFML
 #include <SFML/Graphics.hpp>
 
 int main() {
-	// Make a window that is 800 by 200 pixels
-	// And has the title "Hello from SFML"
+
+	// Cria uma janela 800x200 com o título "Hello from SFML"
 	sf::RenderWindow window(sf::VideoMode(800, 200), "Hello from SFML");
 
-	// Create a "Text" object called "message". Weird but we will learn about objects soon
+	// Cria uma objeto de texto <message> que servirá para amostrar textos na janela
 	sf::Text message;
 
-	// We need to choose a font
+	// Escolhemos uma fonte (presente na pasta do GitHub
 	sf::Font font;
 	font.loadFromFile("28 Days Later.ttf");
 
-	// Set the font to our message
+	// O objeto <message> passa a utilzar a fonte escolhida no objeto fonte
 	message.setFont(font);
 
-	// Assign the actual message
+	// Coloca uma mensagem no objeto
 	message.setString("Hello world");
 
-	// Make it really big
+	// Deixamos ela com o tamanho de 100px
 	message.setCharacterSize(100);
 
-	// Choose a color
+	// Escolhemos uma cor
 	message.setFillColor(sf::Color::White);
 
-	// This "while" loop goes round and round- perhaps forever
+	// Este laço é para deixar a janela aberta enquanto não for fechada, certo?
 	while (window.isOpen())
 	{
-		// The next 6 lines of code detect if the window is closed
-		// And then shuts down the program
+		// Detectamos se a janela foi fechada por um evento de fechar diretamente na janela
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				// Someone closed the window- bye
 				window.close();
 		}
 
-		// Clear everything from the last run of the while loop
+		// Limpa a tela
 		window.clear();
 
-		// Draw our message
+		// Desenha a mensagem e o que for que tiver
 		window.draw(message);
 
-		// Draw our game scene here
-		// Just a message for now
-
-		// Show everything we just drew
+		// Apresenta tudo desenhado na tela
 		window.display();
-	}// This is the end of the "while" loop
+	}
 
 	return 0;
 }
+
+// EXEMPLO ORIGINAL: http://gamecodeschool.com/sfml/building-your-first-sfml-game-project/
